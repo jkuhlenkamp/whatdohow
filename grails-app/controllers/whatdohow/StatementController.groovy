@@ -1,5 +1,6 @@
 package whatdohow
 
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class StatementController {
@@ -99,4 +100,94 @@ class StatementController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def getflexible(){
+				
+		String w = params.statewhat
+		String d = params.statedo
+		String h = params.statehow
+		String l = params.location
+		
+		println "what: " + w + ", do: " + d + ", how: " + h + ", location: " + l
+		
+		def criteria = [w, d, h, l]
+		def combo = ""
+		
+		println criteria
+		println combo
+		
+		// Build combo string to define search criteria
+		for(int i = 0; i < criteria.size(); i++){
+			if( criteria[i] ) {
+				combo += 1
+			} else {
+				combo += 0
+			}
+		}
+		
+		println combo
+		
+		// Search statements according to combo string
+		def statements = []
+		switch ( combo ) {
+			
+			case "0000":
+				statements = []
+				break
+				
+			case "1000":
+				statements += Statement.findByStatewhatLike( w + "%" )
+				break
+				
+			case "0100":
+				statements += Statement.findByStatedoLike( d + "%" )
+				break
+				
+			case "0010":
+				statements += Statement.findByStatehowLike( h + "%" )
+				break
+			case "0001":
+				statements += Statement.findByLocationLike( l + "%" )
+				break
+			
+			case "1100":
+				statements += Statement.findByStatewhatLikeAndStatedoLike( w + "%", d + "%" )
+				break
+				
+			case "0110":
+				statements += Statement.findByStatedoLikeAndStatehowLike( d + "%", h + "%" )
+				break
+				
+			case "0011":
+				statements += Statement.findByStatehowLikeAndLocationLike( h + "%", l + "%")
+				break
+			
+			case "1110":
+				statements += Statement.findByStatewhatLikeAndStatedoLikeAndStatehowLike( w + "%", d + "%", h + "%")
+				break
+				
+			case "0111":
+				statements += Statement.findByStatedoLikeAndStatehowLikeAndLocation( d + "%", h + "%", l + "%")
+				break
+				
+			case "1111":
+				statements += Statement.findByStatewhatLikeAndStatedoLikeAndStatehowLikeAndLocation( w + "%", d + "%", h + "%", l + "%")
+				break
+				
+			default:
+				println "No match in criteria selector!"
+				
+		}
+		
+		/**
+		def result = []
+		
+		for( s in statements) {
+			def r = []
+			s.statehow
+		}
+		*/
+		
+		render statements as JSON
+	}
 }
