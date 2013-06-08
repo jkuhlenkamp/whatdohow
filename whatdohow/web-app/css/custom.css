@@ -1,3 +1,19 @@
+body{
+	background-color: #333333;
+}
+
+h1 {
+	padding-top: 30px;
+	color: #FEFEFE;
+	text-align: center;
+	font-size: 60px;
+	padding-bottom: 50px;
+}
+
+label{
+	color: #AAAAAA;
+}
+
 #question_form {
 	display: inline-block;
 	font-size: 20px;
