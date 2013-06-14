@@ -17,7 +17,7 @@
 		<g:textField name="statedo" id="do_input" class="query_input" placeholder="e.g. dance" value="${statementInstance?.statedo}"/>
 
 		<label>How?</label>
-		<g:textField name="statehow" id="how_inpu" class="query_input" placeholder="e.g. freely" value="${statementInstance?.statehow}"/>
+		<g:textField name="statehow" id="how_input" class="query_input" placeholder="e.g. freely" value="${statementInstance?.statehow}"/>
 
 		<label>Where?</label>
 		<g:textField name="location" id="location_input" class="query_input" placeholder="e.g. New York" value="${statementInstance?.location}"/>
@@ -42,7 +42,7 @@
 			h = jQuery("#how_input").val();
 		
 		console.log(location);
-		jQuery.post("getflexible", {location: l, satementwhat: w, statementdo: d, statementhow: h}, function(data){
+		jQuery.post("getflexible", {location: l, statementwhat: w, statementdo: d, statementhow: h}, function(data){
 			for(var i = 0; 0 < data.length; i++){
 				console.log(data[i]);
 			}

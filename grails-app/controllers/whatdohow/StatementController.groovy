@@ -140,42 +140,42 @@ class StatementController {
 				break
 				
 			case "1000":
-				statements += Statement.findAllByStatewhatLike( "%" + w + "%" )
+				statements += Statement.findAllByStatewhatLike( w + "%" )
 				break
 				
 			case "0100":
-				statements += Statement.findAllByStatedoLike( "%" + d + "%" )
+				statements += Statement.findAllByStatedoLike( d + "%" )
 				break
 				
 			case "0010":
-				statements += Statement.findAllByStatehowLike( "%" + h + "%" )
+				statements += Statement.findAllByStatehowLike( h + "%" )
 				break
 			case "0001":
-				statements += Statement.findAllByLocationLike( "%" + l + "%" )
+				statements += Statement.findAllByLocationLike( l + "%" )
 				break
 			
 			case "1100":
-				statements += Statement.findAllByStatewhatLikeAndStatedoLike( "%" + w + "%", "%" + d + "%" )
+				statements += Statement.findAllByStatewhatLikeAndStatedoLike( w + "%", d + "%" )
 				break
 				
 			case "0110":
-				statements += Statement.findAllByStatedoLikeAndStatehowLike( "%" + d + "%", "%" + h + "%" )
+				statements += Statement.findAllByStatedoLikeAndStatehowLike( d + "%", h + "%" )
 				break
 				
 			case "0011":
-				statements += Statement.findAllByStatehowLikeAndLocationLike( "%" + h + "%", "%" + l + "%")
+				statements += Statement.findAllByStatehowLikeAndLocationLike( h + "%", l + "%")
 				break
 			
 			case "1110":
-				statements += Statement.findAllByStatewhatLikeAndStatedoLikeAndStatehowLike("%" +  w + "%", "%" + d + "%", "%" + h + "%")
+				statements += Statement.findAllByStatewhatLikeAndStatedoLikeAndStatehowLike( w + "%", d + "%", h + "%")
 				break
 				
 			case "0111":
-				statements += Statement.findAllByStatedoLikeAndStatehowLikeAndLocation( "%" + d + "%", "%" + h + "%", "%" + l + "%")
+				statements += Statement.findAllByStatedoLikeAndStatehowLikeAndLocation( d + "%", h + "%", l + "%")
 				break
 				
 			case "1111":
-				statements += Statement.findAllByStatewhatLikeAndStatedoLikeAndStatehowLikeAndLocation( "%" + w + "%", "%" + d + "%", "%" + h + "%", "%" + l + "%")
+				statements += Statement.findAllByStatewhatLikeAndStatedoLikeAndStatehowLikeAndLocation( w + "%", d + "%", h + "%", l + "%")
 				break
 				
 			default:
