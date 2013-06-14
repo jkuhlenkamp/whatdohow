@@ -1,5 +1,9 @@
 body{
-	background-color: #333333;
+	background-color: #333;
+}
+
+.own_container{
+	margin: 0 auto;
 }
 
 h1 {
@@ -33,3 +37,28 @@ label{
 .result_container{
 	color: white;
 }
+
+.result_row {
+	color: white;
+}
+
+.result_row:hover {
+	color: #ddd;
+}
+
+.result_entry {
+	display: inline-block;
+	font-size: 20px;
+	width: 190px;
+	height: 30px;
+	padding: 10px;
+	margin-right: 30px;
+	background-color: #aaa;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px; /* future proofing */
+	-khtml-border-radius: 5px; /* for old Konqueror browsers */
+	margin-bottom: 10px;
+}
+
+

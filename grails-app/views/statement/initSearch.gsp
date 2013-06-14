@@ -6,48 +6,58 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <div class="body">
-
-	<g:form name="question_form" action="getflexible">
-
-		<label>What?</label>
-		<g:textField name="statewhat" id="what_input" class="query_input" placeholder="e.g. Salsa" value="${statementInstance?.statewhat}"/>
-		
-		<label>Action?</label>
-		<g:textField name="statedo" id="do_input" class="query_input" placeholder="e.g. dance" value="${statementInstance?.statedo}"/>
-
-		<label>How?</label>
-		<g:textField name="statehow" id="how_input" class="query_input" placeholder="e.g. freely" value="${statementInstance?.statehow}"/>
-
-		<label>Where?</label>
-		<g:textField name="location" id="location_input" class="query_input" placeholder="e.g. New York" value="${statementInstance?.location}"/>
-
-	</g:form>
-
-	<div class="result_container">
+	<div class="own_container">
 	
-	</div>
+		<div class="row">
+			<g:form name="question_form" action="getflexible">
+				<div class="span3">
+					<label>What?</label>
+					<g:textField name="statewhat" id="what_input" class="query_input" placeholder="e.g. Salsa" value="${statementInstance?.statewhat}"/>
+				</div>
+				
+				<div class="span3">
+					<label>Action?</label>
+					<g:textField name="statedo" id="do_input" class="query_input" placeholder="e.g. dance" value="${statementInstance?.statedo}"/>
+				</div>
+				
+				<div class="span3">
+					<label>How?</label>
+					<g:textField name="statehow" id="how_input" class="query_input" placeholder="e.g. freely" value="${statementInstance?.statehow}"/>
+				</div>
+				
+				<div class="span3">
+					<label>Where?</label>
+					<g:textField name="location" id="location_input" class="query_input" placeholder="e.g. New York" value="${statementInstance?.location}"/>
+				</div>
+		
+			</g:form>
+		</div>
+	
+		<div class="result_container"></div>
 
-  </div>
+	</div>
   
   <g:javascript library="jquery"/>
   <script type="text/javascript">
 	jQuery(".query_input").on("keyup", function(){ getResults(); });
-
 
 	function getResults(){
 		var l = jQuery("#location_input").val(),
 			w = jQuery("#what_input").val(),
 			d = jQuery("#do_input").val(),
 			h = jQuery("#how_input").val();
-		
-		console.log(location);
-		jQuery.post("getflexible", {location: l, statementwhat: w, statementdo: d, statementhow: h}, function(data){
-			for(var i = 0; 0 < data.length; i++){
-				console.log(data[i]);
-			}
 
-			jQuery(".result_container").text(data.location);
+		jQuery.post("getflexible", {statewhat: w, statedo: d, statehow: h, location: l}, function(data){
+		    jQuery(".result_container").html("");
+			$.each(data, function(i, e) {
+				var html =	"<div class=\"result_row\">" +
+								"<div class=\"result_entry\">" + e.statewhat + "</div>" +
+								"<div class=\"result_entry\">" + e.statedo + "</div>" +	
+								"<div class=\"result_entry\">" + e.statehow + "</div>" +
+								"<div class=\"result_entry\">" + e.location + "</div>" +
+							"</div>"
+				jQuery(".result_container").append(html);
+			});
 		});
 			
 	}
