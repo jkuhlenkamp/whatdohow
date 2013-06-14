@@ -158,8 +158,20 @@ class StatementController {
 				statements += Statement.findAllByStatewhatLikeAndStatedoLike( w + "%", d + "%" )
 				break
 				
+			case "1010":
+				statements += Statement.findAllByStatewhatLikeAndStatehowLike( w + "%", h + "%" )
+				break
+				
+			case "1001":
+				statements += Statement.findAllByStatewhatLikeAndLocationLike( w + "%", l + "%" )
+				break
+				
 			case "0110":
 				statements += Statement.findAllByStatedoLikeAndStatehowLike( d + "%", h + "%" )
+				break
+				
+			case "0101":
+				statements += Statement.findAllByStatedoLikeAndLocationLike( d + "%", l + "%" )
 				break
 				
 			case "0011":
@@ -168,6 +180,10 @@ class StatementController {
 			
 			case "1110":
 				statements += Statement.findAllByStatewhatLikeAndStatedoLikeAndStatehowLike( w + "%", d + "%", h + "%")
+				break
+				
+			case "1101":
+				statements += Statement.findAllByStatewhatLikeAndStatedoLikeAndLocationLike( w + "%", d + "%", l + "%")
 				break
 				
 			case "0111":
@@ -191,6 +207,8 @@ class StatementController {
 			s.statehow
 		}
 		*/
+		
+		println statements
 		
 		render statements as JSON
 	}
