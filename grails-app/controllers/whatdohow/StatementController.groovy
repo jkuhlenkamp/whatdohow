@@ -5,7 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class StatementController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST", getflexible: "POST"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -101,6 +101,10 @@ class StatementController {
         }
     }
 	
+	def initSearch(){
+		def result = []
+	}
+	
 	def getflexible(){
 				
 		String w = params.statewhat
@@ -136,42 +140,42 @@ class StatementController {
 				break
 				
 			case "1000":
-				statements += Statement.findByStatewhatLike( w + "%" )
+				statements += Statement.findAllByStatewhatLike( "%" + w + "%" )
 				break
 				
 			case "0100":
-				statements += Statement.findByStatedoLike( d + "%" )
+				statements += Statement.findAllByStatedoLike( "%" + d + "%" )
 				break
 				
 			case "0010":
-				statements += Statement.findByStatehowLike( h + "%" )
+				statements += Statement.findAllByStatehowLike( "%" + h + "%" )
 				break
 			case "0001":
-				statements += Statement.findByLocationLike( l + "%" )
+				statements += Statement.findAllByLocationLike( "%" + l + "%" )
 				break
 			
 			case "1100":
-				statements += Statement.findByStatewhatLikeAndStatedoLike( w + "%", d + "%" )
+				statements += Statement.findAllByStatewhatLikeAndStatedoLike( "%" + w + "%", "%" + d + "%" )
 				break
 				
 			case "0110":
-				statements += Statement.findByStatedoLikeAndStatehowLike( d + "%", h + "%" )
+				statements += Statement.findAllByStatedoLikeAndStatehowLike( "%" + d + "%", "%" + h + "%" )
 				break
 				
 			case "0011":
-				statements += Statement.findByStatehowLikeAndLocationLike( h + "%", l + "%")
+				statements += Statement.findAllByStatehowLikeAndLocationLike( "%" + h + "%", "%" + l + "%")
 				break
 			
 			case "1110":
-				statements += Statement.findByStatewhatLikeAndStatedoLikeAndStatehowLike( w + "%", d + "%", h + "%")
+				statements += Statement.findAllByStatewhatLikeAndStatedoLikeAndStatehowLike("%" +  w + "%", "%" + d + "%", "%" + h + "%")
 				break
 				
 			case "0111":
-				statements += Statement.findByStatedoLikeAndStatehowLikeAndLocation( d + "%", h + "%", l + "%")
+				statements += Statement.findAllByStatedoLikeAndStatehowLikeAndLocation( "%" + d + "%", "%" + h + "%", "%" + l + "%")
 				break
 				
 			case "1111":
-				statements += Statement.findByStatewhatLikeAndStatedoLikeAndStatehowLikeAndLocation( w + "%", d + "%", h + "%", l + "%")
+				statements += Statement.findAllByStatewhatLikeAndStatedoLikeAndStatehowLikeAndLocation( "%" + w + "%", "%" + d + "%", "%" + h + "%", "%" + l + "%")
 				break
 				
 			default:
