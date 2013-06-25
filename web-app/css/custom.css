@@ -1,6 +1,7 @@
 html,body {
 	/**background-color: #222;**/
-	background: url(bg.png) no-repeat center center fixed;
+	/**background: url(../images/bg.png) no-repeat center center fixed;**/
+	background-color: #222;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
