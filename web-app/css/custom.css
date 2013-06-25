@@ -1,40 +1,86 @@
-body{
+html,body {
+	/**background-color: #222;**/
+	background: url(bg.png) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 100%;
+	font-family: 'Open Sans', sans-serif;
+}
+
+input.eingabe {
+	width: 100%;
+	font-size: 20px;
+	padding: 10px 0 10px 0;
 	background-color: #333;
+	border-color: #777;
+	color: #DDD;
 }
 
-.own_container{
-	margin: 0 auto;
-}
-
-h1 {
-	padding-top: 30px;
-	color: #FEFEFE;
+h1.logo {
+	font-size: 100px;
+	font-weight: bold;
+	color: #FFF;
 	text-align: center;
-	font-size: 60px;
-	padding-bottom: 50px;
+	left: -6px;
+	top: -6px;
+	padding: 30px;
+	font-weight: 700;
 }
 
-label{
-	color: #AAAAAA;
+span.blue { /** BLUE: #58E  **/
+	text-shadow: #58E 1px 1px, #58E 2px 2px, #58E 3px 3px, #58E 4px 4px,
+		#58E 5px 5px, #58E 6px 6px;
 }
 
-#question_form {
-	display: inline-block;
-	font-size: 20px;
+span.red { /** RED:  **/
+	text-shadow: red 1px 1px, red 2px 2px, red 3px 3px, red 4px 4px, red 5px
+		5px, red 6px 6px;
 }
 
-#question_form label {
-	font-size: 20px;
+span.green { /** GREEN: #00CC66 **/
+	text-shadow: #00CC66 1px 1px, #00CC66 2px 2px, #00CC66 3px 3px, #00CC66
+		4px 4px, #00CC66 5px 5px, #00CC66 6px 6px;
 }
 
-#question_form input {
-	padding-top: 20px;
-	padding-bottom: 20px;
-	width: 200px;
-	font-size: 20px;
+.logo_container {
+	width: 300px;
+	text-align: center;
+	margin: 0 auto;
+	padding-bottom: 40px;
 }
 
-.result_container{
+/* Wrapper for page content to push down footer */
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	/* Negative indent footer by it's height */
+	margin: 0 auto -30px;
+}
+
+/* Set the fixed height of the footer here */
+#push,#footer {
+	height: 30px;
+}
+
+#footer {
+	text-align: center;
+	color: #666;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media ( max-width : 767px) {
+	#footer {
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+.result_container {
 	color: white;
 }
 
@@ -60,5 +106,3 @@ label{
 	-khtml-border-radius: 5px; /* for old Konqueror browsers */
 	margin-bottom: 10px;
 }
-
-

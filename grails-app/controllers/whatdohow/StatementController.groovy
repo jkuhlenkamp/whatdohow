@@ -103,7 +103,9 @@ class StatementController {
     }
 	
 	def initSearch(){
-		def result = []
+	//	def htmlContent = new File('/index.html').text
+	//	render text: htmlContent, contentType: "text/html", encoding: "UTF-8"
+		redirect(uri: "/index.html")
 	}
 	
 	def getstatements(){
