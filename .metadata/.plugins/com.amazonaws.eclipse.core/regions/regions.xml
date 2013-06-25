@@ -176,6 +176,7 @@
       <service name="IAM">https://iam.amazonaws.com/</service>
       <service name="SNS">https://sns.ap-southeast-2.amazonaws.com/</service>
       <service name="SQS">https://sqs.ap-southeast-2.amazonaws.com/</service>
+      <service name="SimpleDB">https://sdb.ap-southeast-2.amazonaws.com/</service>
       <service name="EC2">https://ec2.ap-southeast-2.amazonaws.com/</service>
       <service name="RDS">https://rds.ap-southeast-2.amazonaws.com/</service>
       <service name="CloudFormation">https://cloudformation.ap-southeast-2.amazonaws.com/</service>

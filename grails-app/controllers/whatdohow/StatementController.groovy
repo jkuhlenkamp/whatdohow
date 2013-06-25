@@ -1,11 +1,12 @@
 package whatdohow
 
 import grails.converters.JSON
+import grails.converters.XML
 import org.springframework.dao.DataIntegrityViolationException
 
 class StatementController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST", getflexible: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST", getstatements: "POST", savestatement: "POST"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -105,7 +106,7 @@ class StatementController {
 		def result = []
 	}
 	
-	def getflexible(){
+	def getstatements(){
 				
 		String w = params.statewhat
 		String d = params.statedo
@@ -209,7 +210,25 @@ class StatementController {
 		*/
 		
 		println statements
+		withFormat {
+			js { render statements as JSON }
+			xml { render statements as XML }
+		}
 		
-		render statements as JSON
+		
+	}
+	
+	def savestatement() {
+		def statementInstance = new Statement(params)
+		if (!statementInstance.save(flush: true)) {
+			def errorMessage = "ERROR: Statement could bot be saved!"
+			return
+		}
+
+		withFormat {
+			json { render statementInstance as JSON }
+			xml { render statementInstance as XML }
+		}
+
 	}
 }
