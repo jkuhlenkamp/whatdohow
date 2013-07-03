@@ -3,3 +3,4 @@ target-eclipse/
 .settings/
 stacktrace.log
 .metadata/
+.DS_Store

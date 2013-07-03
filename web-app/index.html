@@ -93,26 +93,36 @@
 				jQuery(".result_container").html("");
 				$.each(data, function(i, e) {
 					var context = {
-							what: e.statewhat,
-							do: e.statedo,
-							how: e.statehow,
-							location: e.location
+						what: e.statewhat,
+						do: e.statedo,
+						how: e.statehow,
+						location: e.location
 					}
 					var source   = $("#result-row-template").html();
 					var template = Handlebars.compile(source);
 					jQuery(".result_container").append(template(context));
 				});
+				jQuery(".result_row").click(function(){
+					//$(this).append('CLICKED!');
+				});
 			});
-
 		}
 	</script>
 
 	<script id="result-row-template" type="text/x-handlebars-template">
-		<div class="result_row">
-			<div class="result_entry">{{what}}</div>
-			<div class="result_entry">{{do}}</div>
-			<div class="result_entry">{{how}}</div>
-			<div class="result_entry">{{location}}</div>
+		<div class="row result_row">
+			<div class="span6">
+				<div class="row">
+					<div class="span3">{{do}}</div>
+					<div class="span3">{{what}}</div>
+				</div>
+			</div>
+			<div class="span6">
+				<div class="row">
+					<div class="span3">{{how}}</div>
+					<div class="span3">{{location}}</div>
+				</div>
+			</div>
 		</div>
 	</script>
 
