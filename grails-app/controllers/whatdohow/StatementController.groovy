@@ -6,7 +6,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class StatementController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST", getstatements: "POST", savestatement: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST", getstatements: "GET", savestatement: "POST"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -110,10 +110,10 @@ class StatementController {
 	
 	def getstatements(){
 				
-		String w = params.statewhat
-		String d = params.statedo
-		String h = params.statehow
-		String l = params.location
+		String w = params.statementWhat
+		String d = params.statementDo
+		String h = params.statementHow
+		String l = params.statementLocation
 		
 		println "what: " + w + ", do: " + d + ", how: " + h + ", location: " + l
 		
