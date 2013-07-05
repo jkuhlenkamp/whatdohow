@@ -95,3 +95,8 @@ span.green { /** GREEN: #00CC66 **/
 	color: #ddd;
 	background-color: #888;
 }
+
+.result-details{
+	background-color: red;
+	height: 200px;
+}

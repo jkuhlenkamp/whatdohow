@@ -24,45 +24,11 @@
 					</div>
 				</div>
 
-				<div class="span6">
-					<div class="row">
-						
-						<!-- Do -->
-						<div class="span3">
-							<input type="text" name="statedo" id="do_input" class="eingabe"
-								placeholder="Do... (e.g. dance)">
-						</div>
-
-						<!-- What -->
-						<div class="span3">
-							<input type="text" name="statewhat" id="what_input" class="eingabe"
-								placeholder="...what... (e.g. Salsa)">
-						</div>
-
-					</div>
-				</div>
-
-				<div class="span6">
-					<div class="row">
-
-						<!-- How -->
-						<div class="span3">
-							<input type="text" name="statehow" id="how_input" class="eingabe"
-								placeholder="...how (e.g. relaxed)">
-						</div>
-
-						<!-- Location -->
-						<div class="span3">
-							<input type="text" name="location" id="location_input" class="eingabe"
-								placeholder="Place (e.g. New York)">
-						</div>
-
-					</div>
-				</div>
+				<div id="form-region"></div>
 
 			</div>
 			
-			<div class="result_container"></div>
+			<div id="statements-region"></div>
 			
 		</div>
 		<div id="push"></div>
@@ -70,61 +36,82 @@
 	<div id="footer">
 		<div class="container">Copyright: Do What How - New York 2013</div>
 	</div>
-	
-	<script src="js/jquery.js"></script>
-	<script src="js/handlebars.js"></script>
 
-	<script type="text/javascript">
-		jQuery(".eingabe").on("keyup", function() {
-			getResults();
-		});
 
-		function getResults() {
-			var l = jQuery("#location_input").val(), w = jQuery("#what_input")
-					.val(), d = jQuery("#do_input").val(), h = jQuery(
-					"#how_input").val();
+	<script id="statement-form-template" type="text/template">
+		<div class="span6">
+			<div class="row">
+					
+				<!-- What -->
+				<div class="span3">
+					<input type="text" name="statewhat" id="what_input" class="eingabe"
+						placeholder="...what... (e.g. Salsa)">
+				</div>
 
-			jQuery.post("statement/getstatements", {
-				statewhat : w,
-				statedo : d,
-				statehow : h,
-				location : l
-			}, function(data) {
-				jQuery(".result_container").html("");
-				$.each(data, function(i, e) {
-					var context = {
-						what: e.statewhat,
-						do: e.statedo,
-						how: e.statehow,
-						location: e.location
-					}
-					var source   = $("#result-row-template").html();
-					var template = Handlebars.compile(source);
-					jQuery(".result_container").append(template(context));
-				});
-				jQuery(".result_row").click(function(){
-					//$(this).append('CLICKED!');
-				});
-			});
-		}
+				<!-- Do -->
+				<div class="span3">
+					<input type="text" name="statedo" id="do_input" class="eingabe" placeholder="Do... (e.g. dance)">
+				</div>
+
+			</div>
+		</div>
+
+		<div class="span6">
+			<div class="row">
+
+				<!-- How -->
+				<div class="span3">
+					<input type="text" name="statehow" id="how_input" class="eingabe"
+						placeholder="...how (e.g. relaxed)">
+				</div>
+
+				<!-- Location -->
+				<div class="span3">
+					<input type="text" name="location" id="location_input" class="eingabe"
+						placeholder="Place (e.g. New York)">
+				</div>
+
+			</div>
+		</div>
 	</script>
 
-	<script id="result-row-template" type="text/x-handlebars-template">
+
+	<script id="statement-template" type="text/template">
 		<div class="row result_row">
 			<div class="span6">
 				<div class="row">
-					<div class="span3">{{do}}</div>
-					<div class="span3">{{what}}</div>
+					<div class="span3"><%= statewhat %></div>
+					<div class="span3"><%= statedo %></div>
 				</div>
 			</div>
 			<div class="span6">
 				<div class="row">
-					<div class="span3">{{how}}</div>
-					<div class="span3">{{location}}</div>
+					<div class="span3"><%= statehow %></div>
+					<div class="span3"><%= statewhat %></div>
 				</div>
 			</div>
 		</div>
 	</script>
+	
+	
+	<script src="js/jquery.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/backbone.js"></script>
+    <script src="js/backbone.marionette.js"></script>
+    <script src="js/application.js"></script>
+
+	<!--
+	<script id="result-details-template" type="text/x-handlebars-template">
+		<div class="row">
+			<div class="span12">
+				<div class="result-details">
+					<h1>Details go here!!!!</h1>
+				</div>
+			</div>
+		</div>
+	</script>
+	-->
 
 </body>
 </html>
